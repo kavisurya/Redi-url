@@ -1,7 +1,7 @@
 import requests
 import time
 # Declaring variables
-param_array = ["view","out","url","next","redirect","cgi-bin/redirect.cgi","login","logout"]
+param_array = ["view","out","url","next","redirect","cgi-bin/redirect.cgi","login","logout","page"]
 # file systems
 payloads = open("url_payloads.txt","r")
 payloads1 = open("url_payloads.txt","r")
@@ -46,7 +46,7 @@ check = input("Do you wanna add param ??? like url='payload' RECOMMENDED (yes/no
 if "yes" == check:
     url = input("Enter Your URL (Ex: https://google.com/profileview) : ")
     user_time = input("Enter your Time Delay (Default value is 0) : ")
-    print("Please wait...Wheather the url vulnerable or not. If The URL is vulnerable its appear on OUTPUT.TXT file")
+    print("Please wait...Whether the URL is vulnerable or not. If The URL is vulnerable its appear on the OUTPUT.TXT file")
     for p in param_array:
         # print(url+"?"+p+"="+"paloads")
         inloop = 0
@@ -73,14 +73,14 @@ if "yes" == check:
                     payloads1.seek(0)
                     continue
                 if str(req.status_code)[0:1] == statuscode_300[0:1]:
-                    print("300 SERIES FOUND !!!")
+                    print("300 SERIES FOUND !!!\n [+] Vulnerable URL Found", url +"?"+p+"="+payloads1.readline())
                     output.write(url +"?"+p+"="+payloads1.readline())
 
                 else:
                     pass
 
 elif "no" == check:
-    url = input("Enter Your URL (Ex: https://google.com/profileview) : ")
+    url = input("Enter Your URL (Ex: https://google.com/) : ")
     user_time = input("Enter your Time Delay (Default value is 0) : ")
     inloop = 0
     for x in range(count):
@@ -104,7 +104,7 @@ elif "no" == check:
                 print("bye")
                 break
             if str(req.status_code)[0:1] == statuscode_300[0:1]:
-                print("300 SERIES FOUND !!!")
+                print("300 SERIES FOUND !!!\n [+] Vulnerable URL Found", url + payloads1.readline())
                 output.write(url + payloads1.readline())
 
             else:
