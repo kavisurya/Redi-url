@@ -56,7 +56,7 @@ if "yes" == check:
             try:
                 req = requests.get(url +"?"+p+"="+payloads1.readline())
                 print(inloop,"=>",req.status_code)
-                # print("S.no", str(x), url +"?"+p+"="+payloads1.readline()+ "\t" + str(req.status_code))
+                # print("S.no", str(x), url +"?"+p+"="+payloads1.readline()+ " \t  --->   " + str(req.status_code))
             except KeyboardInterrupt:
                 print("Good bye....")
                 break
@@ -88,7 +88,7 @@ elif "no" == check:
         # print(payloads1.readline()
         try:
             req = requests.get(url + payloads1.readline())
-            print("S.no", str(x), url + payloads1.readline() + "\t" + str(req.status_code))
+            print("S.no", str(x), url + payloads1.readline() + " \t --->  " + str(req.status_code))
         except KeyboardInterrupt:
             print("Good bye....")
             break
